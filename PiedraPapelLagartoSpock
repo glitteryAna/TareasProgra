@@ -1,0 +1,54 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class PPTLS {
+    public static void main(String[] args) {
+        // Definiendo las variables que utilizare
+        String[] opciones = {"piedra", "papel", "tijera", "lagarto", "spock"};
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            Random random = new Random();
+            int indiceComputadora = random.nextInt(opciones.length);
+            String eleccionComputadora = opciones[indiceComputadora];
+
+            System.out.println("Elige piedra, papel, tijera, lagarto, spock (o 'salir' para terminar el juego):");
+            String eleccionUsuario = scanner.nextLine().toLowerCase();
+
+            // Comprobar si el usuario quiere salir del juego
+            if (eleccionUsuario.equals("salir")) {
+                System.out.println("Gracias por jugar. ¡Hasta luego!");
+                break;
+            }
+
+            // Comprobar la elección del usuario y determinar el resultado
+            if (eleccionUsuario.equals("piedra") || eleccionUsuario.equals("papel") || eleccionUsuario.equals("tijera") || eleccionUsuario.equals("lagarto") || eleccionUsuario.equals("spock")) {
+                System.out.println("La computadora eligió: " + eleccionComputadora);
+                System.out.println("Tú elegiste: " + eleccionUsuario);
+
+                if (eleccionUsuario.equals(eleccionComputadora)) {
+                    System.out.println("¡Es un empate!");
+                } else if ((eleccionUsuario.equals("piedra") && eleccionComputadora.equals("tijera")) ||
+                           (eleccionUsuario.equals("piedra") && eleccionComputadora.equals("lagarto"))||
+                           (eleccionUsuario.equals("papel") && eleccionComputadora.equals("spock")) ||
+                           (eleccionUsuario.equals("papel") && eleccionComputadora.equals("piedra")) ||
+                           (eleccionUsuario.equals("lagarto") && eleccionComputadora.equals("papel")) ||
+                           (eleccionUsuario.equals("lagarto") && eleccionComputadora.equals("spock")) ||
+                           (eleccionUsuario.equals("spock") && eleccionComputadora.equals("tijera")) ||
+                           (eleccionUsuario.equals("spock") && eleccionComputadora.equals("piedra")) ||
+                           (eleccionUsuario.equals("tijera") && eleccionComputadora.equals("lagarto"))||
+                           (eleccionUsuario.equals("tijera") && eleccionComputadora.equals("papel"))) {
+                    System.out.println("¡Ganaste!");
+                } else {
+                    System.out.println("La computadora gana.");
+                }
+            } else {
+                System.out.println("Entrada no válida. Por favor, elige piedra, papel, tijera, lagarto o spock");
+            }
+        }
+
+        // Cerrar el objeto Scanner
+        scanner.close();
+    }
+}
