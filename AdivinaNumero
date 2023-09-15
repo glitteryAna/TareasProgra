@@ -1,0 +1,38 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class AdivinaNumero {
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(100) + 1;
+        System.out.println("La computadora acaba de generar un número random entre 1 y 100, intenta adivinarlo: ");
+        
+        for (int intento = 1; intento <= 3; intento++){
+            System.out.print("Intento " + intento + ": Ingresa tu número: ");
+            int numeroUsuario = sc.nextInt();
+
+            if (numeroUsuario<numeroAleatorio){
+                System.out.println("El número ingresado es menor al que buscas");
+            }
+            else if (numeroUsuario>numeroAleatorio){
+                System.out.println("El número ingresado es mayor al que buscas");
+            }
+            else {
+                System.out.println("¡Felicidades, adivinaste el número!");
+            }
+
+            if (intento<3){
+                System.out.println("Tienes "+(3-intento)+" intentos restantes");
+            }
+            else {
+                System.out.println("Agotaste todos tus intentos :(");
+            }
+
+        }
+
+
+       
+    }
+}
